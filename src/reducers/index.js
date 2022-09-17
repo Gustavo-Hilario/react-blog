@@ -1,5 +1,5 @@
-const reducer = () => {
-    return "asdas";
-};
+import { combineReducers } from "redux";
 
-export default reducer;
+export default combineReducers({
+    replaceMe: () => "Hi there!",
+});

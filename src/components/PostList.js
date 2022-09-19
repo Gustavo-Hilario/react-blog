@@ -8,7 +8,7 @@ import UserHeader from "./UserHeader";
 class PostList extends React.Component {
     componentDidMount() {
         this.props.fetchPostsAndUsers();
-        console.log(this.props);
+        // console.log(this.props);
     }
 
     renderList() {

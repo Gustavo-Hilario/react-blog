@@ -8,9 +8,15 @@ export const fetchPostsAndUsers = () => async (dispatch, getState) => {
     await dispatch(fetchPosts());
 
     // Using Lodash to get unique user ID when mapping posts to get userIds
-    const userIds = _.uniq(_.map(getState().posts, "userId"));
+    /*  const userIds = _.uniq(_.map(getState().posts, "userId"));
     // console.log(userIds);
-    userIds.forEach((id) => dispatch(fetchUser(id)));
+    userIds.forEach((id) => dispatch(fetchUser(id))); */
+
+    _.chain(getState().posts)
+        .map("userId")
+        .uniq()
+        .forEach((id) => dispatch(fetchUser(id)))
+        .value(); /* simplification we can make with Lodash */
 };
 
 export const fetchPosts = () => async (dispatch) => {
